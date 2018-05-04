@@ -1,0 +1,31 @@
+<div class="container">
+    <br/>
+    <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search">
+    </div>
+  <div class="form-group" *ngFor="let workout of workouts | workoutfilter: searchText">
+    <div class="row col-sm-9">
+    <hr>
+      <input type="text" class="form-control" name="workout" placeholder="" 
+      [(ngModel)]="workout.workoutTitle" disabled="disabled">
+    </div>
+    <div class="row col-sm-9">
+      <button class="btn btn-primary a-btn-slide-text" (click)="editWorkout(workout)">
+          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+          <span><strong>Edit</strong></span>            
+      </button>
+      <button class="btn btn-primary a-btn-slide-text" (click)="deleteWorkout(workout.workoutId)">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          <span><strong>Delete</strong></span>            
+      </button>
+      <button class="btn btn-primary a-btn-slide-text" (click)="startWorkout(workout)">
+          <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+          <span><strong>Start</strong></span>            
+      </button>
+      <button class="btn btn-primary a-btn-slide-text" (click)="endWorkout(workout)" disabled="disable">
+          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+          <span><strong>End</strong></span>            
+      </button>
+    </div>
+  </div>
+</div>

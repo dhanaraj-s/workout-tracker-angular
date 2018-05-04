@@ -1,0 +1,66 @@
+<div class="container">
+  <h2 *ngIf="startWorkout">Start Workout</h2>
+  <h2 *ngIf="!startWorkout">End Workout</h2>
+  <hr>
+  <form class="form-horizontal" [formGroup]="form">
+    <div class="form-group">
+      <label for="workoutTitle" class="col-sm-3 control-label">Title:</label>
+      <div class="col-sm-9">
+        <input type="text" id="workoutTitle" formControlName="workoutTitle" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="note" class="col-sm-3 control-label">Comment:</label>
+      <div class="col-sm-9">
+        <textarea id="note" class="form-control" formControlName="comment"></textarea>
+      </div>
+    </div>
+    <div *ngIf="startWorkout">
+      <div class="form-group">
+        <label for="startDate" class="col-sm-3 control-label">Start Date:</label>
+        <div class="col-sm-9">
+          <input type="date" id="startDate" formControlName="startDate" class="form-control" autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="startTime" class="col-sm-3 control-label">Start Time:</label>
+        <div class="col-sm-9">
+          <input type="time" id="startTime" formControlName="startTime" class="form-control" autofocus>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!startWorkout">
+      <div class="form-group">
+        <label for="endDate" class="col-sm-3 control-label">End Date:</label>
+        <div class="col-sm-9">
+          <input type="date" id="endDate" formControlName="endDate" class="form-control" autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="endTime" class="col-sm-3 control-label">End Time:</label>
+        <div class="col-sm-9">
+          <input type="time" id="endTime" formControlName="endTime" class="form-control" autofocus>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="startWorkout">
+      <div class="col-sm-3 col-sm-offset-3">
+        <button type="submit" class="btn btn-primary btn-block" (click)="onStart()">Start</button>
+      </div>
+      <div class="col-sm-3">
+        <button type="submit" class="btn btn-primary btn-block" (click)="onCancel()">Cancel</button>
+      </div>
+    </div>
+
+    <div *ngIf="!startWorkout">
+      <div class="col-sm-3 col-sm-offset-3">
+        <button type="submit" class="btn btn-primary btn-block" (click)="onEnd()">End</button>
+      </div>
+      <div class="col-sm-3">
+        <button type="submit" class="btn btn-primary btn-block" (click)="onCancel()">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>

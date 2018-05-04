@@ -1,0 +1,48 @@
+    <!--The content below is only a placeholder and can be replaced.-->
+    <div style="text-align:left">
+        <h1>&nbsp;Workout Tracker</h1>
+    </div>
+    <div class="wrapper">
+        <!-- Menubar -->
+        <header>
+            <nav class="navbar navbar-custom">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" data-target="#myNavbar" data-toggle="collapse" 
+                        class="navbar-toggle">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="#" class="navbar-brand">
+                            <a routerLink="/" routerLinkActive="active" class="btn btn-info btn-lg">
+                                <span class="glyphicon glyphicon-home"></span> Home
+                            </a>
+                        </a>
+                    </div>
+                    <div id="myNavbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a routerLink="/workout" routerLinkActive="active">View All</a>
+                            </li>
+                            <li>
+                                <a routerLink="/create-workout" routerLinkActive="active">Create</a>
+                            </li>
+                            <li>
+                                <a routerLink="/category" routerLinkActive="active">Category</a>
+                            </li>
+                            <li>
+                                <a routerLink="/track" routerLinkActive="active">Track</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+    <br>
+    <div id="main" class="container">
+        <!-- angular templating : This is where content will be injected -->
+        <router-outlet></router-outlet>
+    </div>

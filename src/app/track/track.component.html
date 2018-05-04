@@ -1,0 +1,58 @@
+<div class="card card-block panel panel-default panel-body">
+  <table>
+    <tr class="bg-info text-style">
+      <td>
+        Workout Time of Day
+      </td>
+      <td>:&nbsp;&nbsp;{{dayTotalCaloriesMin}}</td>
+      <td>&nbsp;&nbsp;Min</td>
+    </tr>
+    <tr class="bg-info text-style">
+      <td>
+        Workout Time of Week
+      </td>
+      <td>:&nbsp;&nbsp;{{weekTotalCaloriesMin}}</td>
+      <td>&nbsp;&nbsp;Min</td>
+    </tr>
+    <tr class="bg-info text-style">
+      <td>
+        Workout Time of Month
+      </td>
+      <td>:&nbsp;&nbsp;{{monthTotalCaloriesMin}}</td>
+      <td>&nbsp;&nbsp;Min</td>
+    </tr>
+  </table>
+</div>
+
+<div class="card card-block panel panel-default panel-body">
+  <h3>
+    {{weeklyTitle}}
+  </h3>
+  <hr>
+  <canvas baseChart [chartType]="'bar'" [datasets]="chartData1" [labels]="WeeklyLabels" [options]="chartOptions" [legend]="true"
+    [colors]="colors" (chartClick)="onChartClick($event)">
+  </canvas>
+  <mark>Week Total Calories Burnt: {{weekTotalCalories}}</mark>
+</div>
+
+<div class="card card-block panel panel-default panel-body">
+  <h3>
+    {{monthlyTitle}}
+  </h3>
+  <hr>
+  <canvas baseChart [chartType]="'bar'" [datasets]="chartData2" [labels]="MonthlyLabels" [options]="chartOptions" [legend]="true"
+    [colors]="colors" (chartClick)="onChartClick($event)">
+  </canvas>
+  <mark>Month Total Calories Burnt: {{monthTotalCalories}}</mark>
+</div>
+
+<div class="card card-block panel panel-default panel-body">
+  <h3>
+    {{yearlyTitle}}
+  </h3>
+  <hr>
+  <canvas baseChart [chartType]="'bar'" [datasets]="chartData3" [labels]="YearlyLabels" [options]="chartOptions" [legend]="true"
+    [colors]="colors" (chartClick)="onChartClick($event)">
+  </canvas>
+  <mark>Year Total Calories Burnt: {{yearTotalCalories}}</mark>
+</div>

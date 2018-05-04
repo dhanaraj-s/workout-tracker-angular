@@ -1,0 +1,50 @@
+<div class="container">
+    <h2>Add Category</h2>
+    <hr>
+    <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search">
+    </div>
+    <div class="form-group">
+      <hr>
+        <div class="row col-sm-9 category-padding">
+            <div class="input-group">
+                <input type="text" class="form-control" [(ngModel)]="newCategory" 
+                placeholder="Enter new category">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-success plus-button value-control" (click)="addCategory()" 
+                    [attr.disabled]="(newCategory == null || newCategory == '' || newCategory == ' ') ? '' : null">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped" ng-hide="users.length==0">
+        <thead></thead>
+        <tbody>
+          <tr *ngFor="let category of categories | categoryfilter : searchText">
+            <td>
+              <input type="text" class="form-control" [(ngModel)]="category.categoryName" 
+              [value]="category.categoryId" placeholder="Category" required="" 
+              [attr.disabled]="!category.isEdit ? '' : null"/>
+            </td>
+            <td>
+                <button *ngIf="!category.isEdit" class="btn btn-primary a-btn-slide-text" 
+                (click)="editCategory(category)">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    <span><strong>Edit</strong></span>            
+                </button>
+                <button *ngIf="category.isEdit" class="btn btn-primary a-btn-slide-text" 
+                (click)="updateCategory(category)">
+                        <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+                        <span><strong>Save</strong></span>            
+                </button>
+                <button class="btn btn-primary a-btn-slide-text" (click)="deleteCategory(category.categoryId)">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <span><strong>Delete</strong></span>            
+                </button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+</div>

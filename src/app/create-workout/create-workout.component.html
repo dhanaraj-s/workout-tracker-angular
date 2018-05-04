@@ -1,0 +1,66 @@
+
+<div class="container">
+    <h2 *ngIf="!editWorkout">Add Workout</h2>
+    <h2 *ngIf="editWorkout">Edit Workout</h2>
+    <hr>
+    <form class="form-horizontal" [formGroup]="form">
+        <div class="form-group">
+            <label for="workoutTitle" class="col-sm-3 control-label">Title:</label>
+            <div class="col-sm-9">
+                <input type="text" id="workoutTitle" formControlName="workoutTitle" class="form-control" autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="note" class="col-sm-3 control-label">Note:</label>
+            <div class="col-sm-9">
+                <textarea id="note" class="form-control" formControlName="note"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="calories" class="col-sm-3 control-label">Calories Burnt Per Min:</label>
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <input type="number" class="form-control" id="calories" formControlName="calories">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-danger minus-button value-control" (click)="decrement();" [disabled]="disabledVal">
+                      <span class="glyphicon glyphicon-minus"></span>
+                    </button></span>
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-success plus-button value-control" (click)="increment();">
+                        <span class="glyphicon glyphicon-plus"></span>
+                      </button></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="country" class="col-sm-3 control-label">Category:</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <select class="form-control" id="category" formControlName="category">
+                        <option *ngFor="let category of categories" [value]="category.categoryId">
+                            {{category.categoryName}}</option>
+                    </select>
+                    <span class="input-group-btn">
+                            <button type="button" class="btn btn-success plus-button value-control" (click)="addCategory();">
+                            <span class="glyphicon glyphicon-plus"></span>
+                    </button></span>
+                </div>
+            </div>
+        </div> <!-- /.form-group -->
+
+        <div class="form-group" *ngIf="!editWorkout">
+            <div class="col-sm-3 col-sm-offset-3">
+                <button type="submit" class="btn btn-primary btn-block button-space" (click)="onSubmit()" [disabled]="!form.valid">Add Workout</button>
+            </div>
+        </div>
+        <div class="form-group" *ngIf="editWorkout">
+            <div class="col-sm-3 col-sm-offset-3">
+                <button type="submit" class="btn btn-primary btn-block button-space" (click)="onUpdate()" [disabled]="!form.valid">Update</button>
+            </div>
+            <div class="col-sm-3">
+                <button type="submit" class="btn btn-primary btn-block button-space" (click)="onCancel()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div> 
