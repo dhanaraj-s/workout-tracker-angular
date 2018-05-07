@@ -65,9 +65,14 @@ export class TrackComponent implements OnInit {
       this.monthlyTitle = 'Month wise calorie burn chart';
       this.yearlyTitle = 'Year wise calorie burn chart';
       var curr = new Date();
+      curr.setSeconds(0);
+      curr.setMinutes(0);
+      curr.setHours(0);
       var day = curr.getDay();
-      var firstday = new Date(curr.getTime() - 60*60*24* day*1000); // will return firstday (i.e. Sunday) of the week
-      var lastday = new Date(curr.getTime() + 60 * 60 *24 * 6 * 1000);
+      var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
+      var last = first + 6; // last day is the first day + 6
+      var firstday = new Date(curr.setDate(first));
+      var lastday = new Date(curr.setDate(last));
       var firstMonthDay = new Date(curr.getFullYear(), curr.getMonth(), 1);
       var lastMonthDay = new Date(curr.getFullYear(), curr.getMonth() + 1, 0);
       var year = new Date().getFullYear();
@@ -78,7 +83,7 @@ export class TrackComponent implements OnInit {
         var startDate = new Date(obj.startDate +' '+obj.startTime);
         var endDate = new Date(obj.endDate +' '+obj.endTime);
         var diff = endDate.getTime() - startDate.getTime();
-        var date = new Date(obj.endDate);
+        var date = endDate;
         if (date >= firstday && date <= lastday) {
           if (weeklyMap.get(date.getDay())) {
             var temp = weeklyMap.get(date.getDay());
